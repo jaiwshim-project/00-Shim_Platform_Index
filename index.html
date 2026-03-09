@@ -777,6 +777,11 @@ const PROJECTS = [
   { num:'16-2',  cat:'도구', icon:'🔥', name:'화이어 내비',
     dir:'16-2 화이어 내비', desc:'화이어 내비게이션 도구.',
     tags:['내비','도구'], preview:'16-2 화이어 내비/index.html' },
+
+  // ── 외부 링크 (GitHub Pages 등) ──
+  { num:'01-2',  cat:'컨설팅', icon:'🏢', name:'AX BIZ 그룹',
+    dir:'01-2-AXBizGroup', desc:'AX BIZ 그룹 AI 솔루션 포트폴리오. 전용 저장소로 운영.',
+    tags:['비즈니스','AI','그룹'], extUrl:'https://jaiwshim-project.github.io/01-2-AXBizGroup/index' },
 ];
 
 // ── 렌더링 ───────────────────────────────────
@@ -824,13 +829,15 @@ function render(list) {
 function card(p) {
   // data-dir 속성으로 경로 전달 → onclick에 직접 삽입 시 백슬래시 escape 문제 완전 방지
   const dirAttr     = p.dir.replace(/"/g, '&quot;');
-  const previewHref = p.preview ? 'file:///' + ROOT.replace(/\\/g, '/') + p.preview.replace(/\\/g, '/') : '';
-  const typeClass   = p.preview ? (p.sub ? 'type-sub' : 'type-direct') : '';
-  const typeBadge   = p.preview
-    ? (p.sub
-        ? `<div class="type-badge sub">📂 서브폴더</div>`
-        : `<div class="type-badge direct">⚡ 직접연결</div>`)
-    : '';
+  const previewHref = p.extUrl ? p.extUrl : (p.preview ? 'file:///' + ROOT.replace(/\\/g, '/') + p.preview.replace(/\\/g, '/') : '');
+  const typeClass   = (p.extUrl || p.preview) ? (p.sub ? 'type-sub' : 'type-direct') : '';
+  const typeBadge   = p.extUrl
+    ? `<div class="type-badge direct">🌐 외부 링크</div>`
+    : (p.preview
+        ? (p.sub
+            ? `<div class="type-badge sub">📂 서브폴더</div>`
+            : `<div class="type-badge direct">⚡ 직접연결</div>`)
+        : '');
   const previewBtnClass = p.sub ? 'btn-action sub-preview' : 'btn-action primary';
 
   // 편집 모드
