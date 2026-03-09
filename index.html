@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>심재우 · AI 플랫폼 프로젝트 인덱스</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 <style>
   :root {
     --bg:     #eef2f7;
@@ -555,6 +556,33 @@
 <script>
 const ROOT = 'C:\\01 Claude-Code\\';
 
+// ── Supabase 연동 ──────────────────────────────────────────────────
+const _SB_URL = 'https://haxcktfnuudlqciyljtp.supabase.co';
+const _SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhheGNrdGZudXVkbHFjaXlsanRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMDUwNDAsImV4cCI6MjA4NDg4MTA0MH0.suN7BeaHx3MjaNlMDQa0940P-rMl2XPyk4ksoQEU3YM';
+const sb = supabase.createClient(_SB_URL, _SB_KEY);
+
+async function dbSet(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+  try {
+    await sb.from('site_data').upsert({ key, value, updated_at: new Date().toISOString() });
+  } catch (e) { console.warn('Supabase 저장 실패:', e); }
+}
+
+async function syncFromSupabase() {
+  try {
+    const { data } = await sb.from('site_data').select('key, value');
+    if (!data || !data.length) return;
+    let changed = false;
+    data.forEach(({ key, value }) => {
+      if (key === 'userProjects'   && value !== null) { userProjects   = value; localStorage.setItem('userProjects',   JSON.stringify(value)); changed = true; }
+      if (key === 'cardOverrides'  && value !== null) { cardOverrides  = value; localStorage.setItem('cardOverrides',  JSON.stringify(value)); changed = true; }
+      if (key === 'customTabs'     && value !== null) { customTabs     = value; localStorage.setItem('customTabs',     JSON.stringify(value)); changed = true; }
+      if (key === 'customTabCards' && value !== null) { customTabCards = value; localStorage.setItem('customTabCards', JSON.stringify(value)); changed = true; }
+    });
+    if (changed) { renderCustomTabs(); filter(); }
+  } catch (e) { console.warn('Supabase 동기화 실패:', e); }
+}
+
 // ── 사용자 추가 프로젝트 ──────────────────────────────────────────
 let userProjects  = JSON.parse(localStorage.getItem('userProjects')   || '[]');
 let cardOverrides = JSON.parse(localStorage.getItem('cardOverrides')  || '{}');
@@ -990,7 +1018,7 @@ function enterEditMode(e, key) {
 function resetEdit() {
   // 커스텀 지정 삭제 → 기본 cat 필터로 복원
   delete customTabCards[editingKw];
-  localStorage.setItem('customTabCards', JSON.stringify(customTabCards));
+  dbSet('customTabCards', customTabCards);
   exitEditMode();
   renderCustomTabs();
   showToast('🔄 기본값으로 복원되었습니다');
@@ -1006,7 +1034,7 @@ function toggleSelect(el) {
 
 function saveEdit() {
   customTabCards[editingKw] = [...selectedDirs];
-  localStorage.setItem('customTabCards', JSON.stringify(customTabCards));
+  dbSet('customTabCards', customTabCards);
   exitEditMode();
   renderCustomTabs();
   showToast('✅ 저장되었습니다');
@@ -1035,7 +1063,7 @@ function confirmTab() {
   const val = document.getElementById('tabInput').value.trim();
   if (val && !customTabs.includes(val)) {
     customTabs.push(val);
-    localStorage.setItem('customTabs', JSON.stringify(customTabs));
+    dbSet('customTabs', customTabs);
     renderCustomTabs();
   }
   cancelTab();
@@ -1049,7 +1077,7 @@ function cancelTab() {
 function deleteTab(e, kw) {
   e.stopPropagation();
   customTabs = customTabs.filter(t => t !== kw);
-  localStorage.setItem('customTabs', JSON.stringify(customTabs));
+  dbSet('customTabs', customTabs);
   if (activeTab === '__kw__' + kw) { activeTab = '전체'; document.querySelector('.tab[data-cat="전체"]').classList.add('active'); filter(); }
   renderCustomTabs();
 }
@@ -1301,14 +1329,14 @@ function saveNewProject() {
   // 중복 dir 제거 후 추가
   userProjects = userProjects.filter(p => p.dir !== newProj.dir);
   userProjects.push(newProj);
-  localStorage.setItem('userProjects', JSON.stringify(userProjects));
+  dbSet('userProjects', userProjects);
 
   // 커스텀 탭에 선택된 경우 → customTabCards에 자동 등록
   extraCustomKws.forEach(kw => {
     if (!customTabCards[kw]) customTabCards[kw] = [];
     if (!customTabCards[kw].includes(dir)) customTabCards[kw].push(dir);
   });
-  localStorage.setItem('customTabCards', JSON.stringify(customTabCards));
+  dbSet('customTabCards', customTabCards);
 
   closeAddModal();
   document.getElementById('totalCount').textContent = getAllProjects().length;
@@ -1321,7 +1349,7 @@ function deleteUserProject(el) {
   const dir = el.closest('.card').dataset.dir;
   if (!confirm('이 프로젝트를 삭제하시겠습니까?')) return;
   userProjects = userProjects.filter(p => p.dir !== dir);
-  localStorage.setItem('userProjects', JSON.stringify(userProjects));
+  dbSet('userProjects', userProjects);
   document.getElementById('totalCount').textContent = getAllProjects().length;
   filter();
   showToast('🗑 프로젝트가 삭제되었습니다');
@@ -1404,11 +1432,11 @@ function saveEditCard() {
     // 사용자 추가 카드 → userProjects 수정
     updated.isUserAdded = true;
     userProjects = userProjects.map(p => p.dir === dir ? {...p, ...updated} : p);
-    localStorage.setItem('userProjects', JSON.stringify(userProjects));
+    dbSet('userProjects', userProjects);
   } else {
-    // 기본 카드 → 오버라이드 저장 (별도 localStorage)
+    // 기본 카드 → 오버라이드 저장
     cardOverrides[dir] = updated;
-    localStorage.setItem('cardOverrides', JSON.stringify(cardOverrides));
+    dbSet('cardOverrides', cardOverrides);
   }
 
   // 커스텀 탭 등록
@@ -1416,7 +1444,7 @@ function saveEditCard() {
     if (!customTabCards[kw]) customTabCards[kw] = [];
     if (!customTabCards[kw].includes(dir)) customTabCards[kw].push(dir);
   });
-  localStorage.setItem('customTabCards', JSON.stringify(customTabCards));
+  dbSet('customTabCards', customTabCards);
 
   closeEditModal();
   document.getElementById('totalCount').textContent = getAllProjects().length;
@@ -1424,9 +1452,12 @@ function saveEditCard() {
   showToast('✅ 수정되었습니다');
 }
 
-// 초기 렌더
+// 초기 렌더 (localStorage 기반 즉시 표시)
 document.getElementById('totalCount').textContent = getAllProjects().length;
 filter();
+
+// Supabase에서 최신 데이터 동기화 (비동기)
+syncFromSupabase();
 </script>
 </body>
 </html>
