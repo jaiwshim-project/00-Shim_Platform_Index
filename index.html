@@ -571,7 +571,24 @@ async function dbSet(key, value) {
 async function syncFromSupabase() {
   try {
     const { data } = await sb.from('site_data').select('key, value');
-    if (!data || !data.length) return;
+
+    if (!data || !data.length) {
+      // Supabase가 비어있으면 로컬 데이터를 업로드 (최초 1회 마이그레이션)
+      const toUpload = [
+        { key: 'userProjects',   value: userProjects },
+        { key: 'cardOverrides',  value: cardOverrides },
+        { key: 'customTabs',     value: customTabs },
+        { key: 'customTabCards', value: customTabCards },
+      ].filter(({ value }) =>
+        Array.isArray(value) ? value.length > 0 : Object.keys(value).length > 0
+      );
+      if (toUpload.length) {
+        await sb.from('site_data').upsert(toUpload.map(d => ({ ...d, updated_at: new Date().toISOString() })));
+        console.log('로컬 데이터 → Supabase 업로드 완료');
+      }
+      return;
+    }
+
     let changed = false;
     data.forEach(({ key, value }) => {
       if (key === 'userProjects'   && value !== null) { userProjects   = value; localStorage.setItem('userProjects',   JSON.stringify(value)); changed = true; }
