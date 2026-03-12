@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구조도 · 03-02 Shim Platform Index</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: #0d1b2e;
+    font-family: 'Malgun Gothic','맑은 고딕', sans-serif;
+    min-height: 100vh;
+    overflow-x: auto;
+  }
+  .page-header {
+    background: linear-gradient(135deg, #0b1f3a 0%, #102a50 100%);
+    padding: 18px 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex; align-items: center; gap: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .page-header h1 { font-size: 1.1rem; font-weight: 800; color: #fff; }
+  .page-header h1 span { color: #fcd34d; }
+  .page-header .path {
+    font-size: 0.75rem; color: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.07); padding: 3px 12px;
+    border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);
+  }
+  .diagram-wrap {
+    padding: 36px 40px 60px;
+    display: flex; justify-content: center;
+  }
+  svg { display: block; }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>📐 구조도 · <span>03-02 Shim Platform Index</span></h1>
+  <span class="path">C:\01 Claude-Code\03-02 Shim Platform Index</span>
+</div>
+
+<div class="diagram-wrap">
+<svg width="1520" height="980" viewBox="0 0 1520 980" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <!-- 배경 그라디언트 -->
+  <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#0f2238"/>
+    <stop offset="100%" stop-color="#0d1b2e"/>
+  </linearGradient>
+  <!-- 박스 그라디언트들 -->
+  <linearGradient id="gRoot" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#1e3a5f"/>
+    <stop offset="100%" stop-color="#0f2744"/>
+  </linearGradient>
+  <linearGradient id="gFile" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#1976d2"/>
+    <stop offset="100%" stop-color="#1565c0"/>
+  </linearGradient>
+  <linearGradient id="gPy" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#2e7d32"/>
+    <stop offset="100%" stop-color="#1b5e20"/>
+  </linearGradient>
+  <linearGradient id="gCloud" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#0277bd"/>
+    <stop offset="100%" stop-color="#01579b"/>
+  </linearGradient>
+  <linearGradient id="gHTML" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#37474f"/>
+    <stop offset="100%" stop-color="#263238"/>
+  </linearGradient>
+  <linearGradient id="gJS" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#6a1b9a"/>
+    <stop offset="100%" stop-color="#4a148c"/>
+  </linearGradient>
+  <linearGradient id="gData" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#004d40"/>
+    <stop offset="100%" stop-color="#00251a"/>
+  </linearGradient>
+  <!-- 카테고리 -->
+  <linearGradient id="gTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#00897b"/><stop offset="100%" stop-color="#00695c"/>
+  </linearGradient>
+  <linearGradient id="gBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#1976d2"/><stop offset="100%" stop-color="#1565c0"/>
+  </linearGradient>
+  <linearGradient id="gPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#8e24aa"/><stop offset="100%" stop-color="#6a1b9a"/>
+  </linearGradient>
+  <linearGradient id="gRed" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#d32f2f"/><stop offset="100%" stop-color="#b71c1c"/>
+  </linearGradient>
+  <linearGradient id="gPink" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#c2185b"/><stop offset="100%" stop-color="#880e4f"/>
+  </linearGradient>
+  <linearGradient id="gOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#e64a19"/><stop offset="100%" stop-color="#bf360c"/>
+  </linearGradient>
+  <linearGradient id="gGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#43a047"/><stop offset="100%" stop-color="#2e7d32"/>
+  </linearGradient>
+  <!-- 화살표 마커 -->
+  <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="rgba(255,255,255,0.3)"/>
+  </marker>
+  <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#90caf9"/>
+  </marker>
+  <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#ce93d8"/>
+  </marker>
+  <marker id="arrowTeal" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L8,3 z" fill="#80cbc4"/>
+  </marker>
+  <!-- 그림자 필터 -->
+  <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+    <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgba(0,0,0,0.5)"/>
+  </filter>
+  <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="3" result="blur"/>
+    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+</defs>
+
+<!-- 배경 -->
+<rect width="1520" height="980" fill="url(#bg)" rx="16"/>
+
+<!-- ══════════════════════════════════════════════════
+     Zone 1 — 폴더 루트 (왼쪽 상단)
+══════════════════════════════════════════════════ -->
+
+<!-- 루트 폴더 박스 -->
+<g filter="url(#shadow)">
+  <rect x="40" y="40" width="230" height="72" rx="12" fill="url(#gRoot)" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+</g>
+<text x="55" y="68" font-size="11" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">📁 FOLDER ROOT</text>
+<text x="55" y="90" font-size="13" font-weight="800" fill="#fcd34d" font-family="Malgun Gothic">03-02 Shim Platform Index</text>
+<text x="55" y="106" font-size="10" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">C:\01 Claude-Code\</text>
+
+<!-- ── 파일 목록 섹션 ── -->
+<text x="40" y="146" font-size="10" font-weight="700" fill="rgba(255,255,255,0.35)" font-family="Malgun Gothic" letter-spacing="2">FILES</text>
+<line x1="40" y1="152" x2="270" y2="152" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+<!-- index.html 파일 -->
+<g filter="url(#shadow)">
+  <rect x="40" y="162" width="230" height="58" rx="10" fill="url(#gFile)" stroke="#90caf9" stroke-width="1.5"/>
+</g>
+<rect x="40" y="162" width="4" height="58" rx="2" fill="#fcd34d"/>
+<text x="58" y="185" font-size="10" fill="rgba(255,255,255,0.6)" font-family="Malgun Gothic">📄 HTML</text>
+<text x="58" y="202" font-size="13" font-weight="800" fill="#fff" font-family="Malgun Gothic">index.html</text>
+<text x="58" y="215" font-size="9.5" fill="rgba(255,255,255,0.55)" font-family="Malgun Gothic">메인 플랫폼 인덱스 앱</text>
+
+<!-- serve.py 파일 -->
+<g filter="url(#shadow)">
+  <rect x="40" y="232" width="230" height="52" rx="10" fill="url(#gPy)" stroke="#a5d6a7" stroke-width="1.5"/>
+</g>
+<rect x="40" y="232" width="4" height="52" rx="2" fill="#69f0ae"/>
+<text x="58" y="253" font-size="10" fill="rgba(255,255,255,0.6)" font-family="Malgun Gothic">🐍 Python</text>
+<text x="58" y="270" font-size="13" font-weight="800" fill="#fff" font-family="Malgun Gothic">serve.py</text>
+<text x="58" y="279" font-size="9.5" fill="rgba(255,255,255,0.55)" font-family="Malgun Gothic">로컬 개발 서버 실행</text>
+
+<!-- .claude/settings.local.json -->
+<g filter="url(#shadow)">
+  <rect x="40" y="296" width="230" height="52" rx="10" fill="#1a2a3a" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+</g>
+<rect x="40" y="296" width="4" height="52" rx="2" fill="#607d8b"/>
+<text x="58" y="317" font-size="10" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">⚙️ Config</text>
+<text x="58" y="334" font-size="12" font-weight="800" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">.claude/settings.local.json</text>
+<text x="58" y="343" font-size="9.5" fill="rgba(255,255,255,0.35)" font-family="Malgun Gothic">Claude Code 설정</text>
+
+<!-- Git 저장소 -->
+<g filter="url(#shadow)">
+  <rect x="40" y="360" width="230" height="52" rx="10" fill="#1a2a3a" stroke="rgba(255,255,255,0.1)" stroke-width="1.5"/>
+</g>
+<rect x="40" y="360" width="4" height="52" rx="2" fill="#f44336"/>
+<text x="58" y="381" font-size="10" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">🔀 Git</text>
+<text x="58" y="398" font-size="12" font-weight="800" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">.git / GitHub</text>
+<text x="58" y="407" font-size="9.5" fill="rgba(255,255,255,0.35)" font-family="Malgun Gothic">jaiwshim-project / 00-Shim_Platform_Index</text>
+
+<!-- Supabase 연동 -->
+<g filter="url(#shadow)">
+  <rect x="40" y="432" width="230" height="58" rx="10" fill="url(#gCloud)" stroke="#4fc3f7" stroke-width="1.5"/>
+</g>
+<rect x="40" y="432" width="4" height="58" rx="2" fill="#00e5ff"/>
+<text x="58" y="453" font-size="10" fill="rgba(255,255,255,0.6)" font-family="Malgun Gothic">☁️ Cloud DB</text>
+<text x="58" y="470" font-size="13" font-weight="800" fill="#fff" font-family="Malgun Gothic">Supabase</text>
+<text x="58" y="482" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">사용자 데이터 클라우드 동기화</text>
+<text x="58" y="483" dy="5" font-size="8.5" fill="rgba(255,255,255,0.35)" font-family="Malgun Gothic">site_data 테이블 · upsert 방식</text>
+
+<!-- ══════════════════════════════════════════════════
+     커넥터: 루트 → index.html (굵은 화살표)
+══════════════════════════════════════════════════ -->
+<!-- 루트에서 index.html로 -->
+<path d="M 155 112 L 155 162" stroke="#90caf9" stroke-width="2" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowBlue)"/>
+<!-- index.html에서 HTML 구조 영역으로 (큰 화살표) -->
+<path d="M 270 191 C 360 191, 360 210, 430 210" stroke="#90caf9" stroke-width="2" fill="none" marker-end="url(#arrowBlue)"/>
+<!-- index.html에서 JS 모듈 영역으로 -->
+<path d="M 270 191 C 360 191, 360 460, 430 460" stroke="#ce93d8" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowPurple)"/>
+<!-- index.html에서 데이터 카테고리로 -->
+<path d="M 270 191 C 360 191, 360 730, 430 730" stroke="#80cbc4" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowTeal)"/>
+<!-- serve.py 참고선 -->
+<path d="M 155 348 L 155 360" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3,3"/>
+<!-- supabase 연동선 -->
+<path d="M 270 461 C 800 461, 800 800, 880 800" stroke="#4fc3f7" stroke-width="1.5" stroke-dasharray="4,4" fill="none"/>
+
+<!-- ══════════════════════════════════════════════════
+     Zone 2 — HTML 구조 (중앙 상단)
+══════════════════════════════════════════════════ -->
+
+<!-- HTML 구조 섹션 제목 -->
+<rect x="425" y="110" width="320" height="32" rx="8" fill="rgba(55,71,79,0.8)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+<text x="441" y="131" font-size="11" font-weight="800" fill="rgba(255,255,255,0.8)" font-family="Malgun Gothic" letter-spacing="1">🏗 HTML 문서 구조</text>
+
+<!-- Header -->
+<g filter="url(#shadow)">
+  <rect x="425" y="155" width="320" height="54" rx="10" fill="url(#gHTML)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+</g>
+<rect x="425" y="155" width="5" height="54" rx="3" fill="#fcd34d"/>
+<text x="445" y="175" font-size="10" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">SECTION 1</text>
+<text x="445" y="192" font-size="12.5" font-weight="800" fill="#fff" font-family="Malgun Gothic">Header (헤더)</text>
+<text x="445" y="203" font-size="9" fill="rgba(255,255,255,0.45)" font-family="Malgun Gothic">타이틀 · 통계 Chips · + 프로젝트 버튼 · sticky top:0</text>
+
+<!-- Toolbar -->
+<g filter="url(#shadow)">
+  <rect x="425" y="222" width="320" height="60" rx="10" fill="url(#gHTML)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+</g>
+<rect x="425" y="222" width="5" height="60" rx="3" fill="#4fc3f7"/>
+<text x="445" y="242" font-size="10" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">SECTION 2</text>
+<text x="445" y="259" font-size="12.5" font-weight="800" fill="#fff" font-family="Malgun Gothic">Toolbar (검색·필터 바)</text>
+<text x="445" y="273" font-size="9" fill="rgba(255,255,255,0.45)" font-family="Malgun Gothic">검색창 · 카테고리 필터 탭 · 커스텀 탭 · sticky z:99</text>
+
+<!-- Grid Wrapper -->
+<g filter="url(#shadow)">
+  <rect x="425" y="296" width="320" height="60" rx="10" fill="url(#gHTML)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+</g>
+<rect x="425" y="296" width="5" height="60" rx="3" fill="#a5d6a7"/>
+<text x="445" y="316" font-size="10" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">SECTION 3</text>
+<text x="445" y="333" font-size="12.5" font-weight="800" fill="#fff" font-family="Malgun Gothic">Grid Wrapper (카드 그리드)</text>
+<text x="445" y="347" font-size="9" fill="rgba(255,255,255,0.45)" font-family="Malgun Gothic">5열 그리드 · 카테고리 라벨 · 카드 컴포넌트 · 빈 상태</text>
+
+<!-- Modal 추가 -->
+<g filter="url(#shadow)">
+  <rect x="425" y="370" width="152" height="58" rx="10" fill="url(#gHTML)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+</g>
+<rect x="425" y="370" width="5" height="58" rx="3" fill="#ce93d8"/>
+<text x="445" y="390" font-size="9.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">MODAL 1</text>
+<text x="445" y="406" font-size="11.5" font-weight="800" fill="#fff" font-family="Malgun Gothic">프로젝트 추가 모달</text>
+<text x="445" y="420" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">경로·이름·카테고리·태그 입력</text>
+
+<!-- Modal 수정 -->
+<g filter="url(#shadow)">
+  <rect x="592" y="370" width="153" height="58" rx="10" fill="url(#gHTML)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+</g>
+<rect x="592" y="370" width="5" height="58" rx="3" fill="#ffab91"/>
+<text x="610" y="390" font-size="9.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">MODAL 2</text>
+<text x="610" y="406" font-size="11.5" font-weight="800" fill="#fff" font-family="Malgun Gothic">프로젝트 수정 모달</text>
+<text x="610" y="420" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">카드 정보 수정·저장</text>
+
+<!-- 편집 모드 바 -->
+<g filter="url(#shadow)">
+  <rect x="425" y="442" width="320" height="48" rx="10" fill="url(#gHTML)" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+</g>
+<rect x="425" y="442" width="5" height="48" rx="3" fill="#ffd54f"/>
+<text x="445" y="462" font-size="9.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">SECTION 4</text>
+<text x="445" y="478" font-size="11.5" font-weight="800" fill="#fff" font-family="Malgun Gothic">Edit Bar · 카드 선택 모드 (하단 고정)</text>
+
+<!-- ══════════════════════════════════════════════════
+     Zone 3 — JavaScript 모듈 (중앙 하단)
+══════════════════════════════════════════════════ -->
+
+<!-- JS 섹션 제목 -->
+<rect x="425" y="520" width="320" height="32" rx="8" fill="rgba(74,20,140,0.8)" stroke="rgba(206,147,216,0.3)" stroke-width="1"/>
+<text x="441" y="541" font-size="11" font-weight="800" fill="rgba(255,255,255,0.8)" font-family="Malgun Gothic" letter-spacing="1">⚡ JavaScript 아키텍처</text>
+
+<!-- Supabase 모듈 -->
+<g filter="url(#shadow)">
+  <rect x="425" y="565" width="152" height="54" rx="10" fill="url(#gJS)" stroke="#ce93d8" stroke-width="1.5"/>
+</g>
+<rect x="425" y="565" width="5" height="54" rx="3" fill="#00e5ff"/>
+<text x="445" y="583" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">MODULE 1</text>
+<text x="445" y="598" font-size="11" font-weight="800" fill="#fff" font-family="Malgun Gothic">Supabase 연동</text>
+<text x="445" y="611" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">dbSet · syncFromSupabase</text>
+
+<!-- 렌더링 엔진 -->
+<g filter="url(#shadow)">
+  <rect x="592" y="565" width="153" height="54" rx="10" fill="url(#gJS)" stroke="#ce93d8" stroke-width="1.5"/>
+</g>
+<rect x="592" y="565" width="5" height="54" rx="3" fill="#ffd54f"/>
+<text x="612" y="583" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">MODULE 2</text>
+<text x="612" y="598" font-size="11" font-weight="800" fill="#fff" font-family="Malgun Gothic">렌더링 엔진</text>
+<text x="612" y="611" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">render() · card() · DOM 생성</text>
+
+<!-- 검색·필터 -->
+<g filter="url(#shadow)">
+  <rect x="425" y="634" width="152" height="54" rx="10" fill="url(#gJS)" stroke="#ce93d8" stroke-width="1.5"/>
+</g>
+<rect x="425" y="634" width="5" height="54" rx="3" fill="#a5d6a7"/>
+<text x="445" y="652" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">MODULE 3</text>
+<text x="445" y="667" font-size="11" font-weight="800" fill="#fff" font-family="Malgun Gothic">검색·필터</text>
+<text x="445" y="680" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">filter() · setTab() · search</text>
+
+<!-- 커스텀 탭 -->
+<g filter="url(#shadow)">
+  <rect x="592" y="634" width="153" height="54" rx="10" fill="url(#gJS)" stroke="#ce93d8" stroke-width="1.5"/>
+</g>
+<rect x="592" y="634" width="5" height="54" rx="3" fill="#ffab91"/>
+<text x="612" y="652" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">MODULE 4</text>
+<text x="612" y="667" font-size="11" font-weight="800" fill="#fff" font-family="Malgun Gothic">커스텀 탭 관리</text>
+<text x="612" y="680" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">renderCustomTabs · add/del</text>
+
+<!-- 사용자 프로젝트 -->
+<g filter="url(#shadow)">
+  <rect x="425" y="703" width="152" height="54" rx="10" fill="url(#gJS)" stroke="#ce93d8" stroke-width="1.5"/>
+</g>
+<rect x="425" y="703" width="5" height="54" rx="3" fill="#90caf9"/>
+<text x="445" y="721" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">MODULE 5</text>
+<text x="445" y="736" font-size="11" font-weight="800" fill="#fff" font-family="Malgun Gothic">사용자 프로젝트</text>
+<text x="445" y="749" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">userProjects · cardOverrides</text>
+
+<!-- 편집 모드 -->
+<g filter="url(#shadow)">
+  <rect x="592" y="703" width="153" height="54" rx="10" fill="url(#gJS)" stroke="#ce93d8" stroke-width="1.5"/>
+</g>
+<rect x="592" y="703" width="5" height="54" rx="3" fill="#ef9a9a"/>
+<text x="612" y="721" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">MODULE 6</text>
+<text x="612" y="736" font-size="11" font-weight="800" fill="#fff" font-family="Malgun Gothic">편집 모드</text>
+<text x="612" y="749" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">enterEditMode · saveEdit · 다중 선택</text>
+
+<!-- 카운트 업데이트 -->
+<g filter="url(#shadow)">
+  <rect x="425" y="772" width="320" height="46" rx="10" fill="url(#gJS)" stroke="#ce93d8" stroke-width="1.5"/>
+</g>
+<rect x="425" y="772" width="5" height="46" rx="3" fill="#fcd34d"/>
+<text x="445" y="791" font-size="9" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">MODULE 7</text>
+<text x="445" y="806" font-size="11" font-weight="800" fill="#fff" font-family="Malgun Gothic">updateTabCounts() · 탭 뱃지 숫자 자동 갱신</text>
+
+<!-- ══════════════════════════════════════════════════
+     Zone 4 — 데이터 레이어 / 카테고리 (오른쪽)
+══════════════════════════════════════════════════ -->
+
+<!-- 데이터 레이어 제목 -->
+<rect x="810" y="60" width="660" height="32" rx="8" fill="rgba(0,77,64,0.8)" stroke="rgba(128,203,196,0.3)" stroke-width="1"/>
+<text x="826" y="81" font-size="11" font-weight="800" fill="rgba(255,255,255,0.85)" font-family="Malgun Gothic" letter-spacing="1">📊 PROJECTS 데이터 — const PROJECTS[ ] — 71개 프로젝트</text>
+
+<!-- 카테고리 카드들 -->
+
+<!-- 치과/의료 -->
+<g filter="url(#shadow)">
+  <rect x="810" y="108" width="300" height="110" rx="12" fill="url(#gTeal)" stroke="#80cbc4" stroke-width="1.5"/>
+</g>
+<text x="830" y="132" font-size="11" font-weight="800" fill="rgba(255,255,255,0.6)" font-family="Malgun Gothic">CAT 1</text>
+<text x="870" y="132" font-size="14" font-weight="800" fill="#fff" font-family="Malgun Gothic">🦷 치과/의료</text>
+<rect x="1080" y="114" width="22" height="22" rx="11" fill="rgba(255,255,255,0.2)"/>
+<text x="1091" y="130" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" font-family="Malgun Gothic">16</text>
+<line x1="830" y1="140" x2="1100" y2="140" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="830" y="157" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">03-04 AX덴탈그룹  ·  20-03 덴탈클리닉파인더  ·  20-04 프랜차이즈</text>
+<text x="830" y="172" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">20-05 AI솔루션통합  ·  20-06 진단지분석  ·  20-07 광고콘텐츠</text>
+<text x="830" y="187" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">20-08~16 카드뉴스·개원·방문케어·의사결정·위생사·화이트치과</text>
+<text x="830" y="207" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">dir: 20-03 ~ 20-16 폴더 · preview: */index.html</text>
+
+<!-- AI교육 -->
+<g filter="url(#shadow)">
+  <rect x="810" y="232" width="300" height="110" rx="12" fill="url(#gBlue)" stroke="#90caf9" stroke-width="1.5"/>
+</g>
+<text x="830" y="256" font-size="11" font-weight="800" fill="rgba(255,255,255,0.6)" font-family="Malgun Gothic">CAT 2</text>
+<text x="870" y="256" font-size="14" font-weight="800" fill="#fff" font-family="Malgun Gothic">📚 AI 교육</text>
+<rect x="1080" y="238" width="22" height="22" rx="11" fill="rgba(255,255,255,0.2)"/>
+<text x="1091" y="254" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" font-family="Malgun Gothic">11</text>
+<line x1="830" y1="264" x2="1100" y2="264" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="830" y="281" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">03-01 AI솔루션포트폴리오  ·  10 Vibe Coding OS</text>
+<text x="830" y="296" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">10-01 바이브코딩매뉴얼  ·  10-02 깃사용법</text>
+<text x="830" y="311" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">30-01~04 AI노벨문해력5 v1/v2/학교용 · AITutorHub통합</text>
+<text x="830" y="327" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">30-09 집필  ·  30-11 미래역량AI Lab  ·  50-08 시니어창업</text>
+
+<!-- 플랫폼 -->
+<g filter="url(#shadow)">
+  <rect x="810" y="356" width="300" height="110" rx="12" fill="url(#gPurple)" stroke="#ce93d8" stroke-width="1.5"/>
+</g>
+<text x="830" y="380" font-size="11" font-weight="800" fill="rgba(255,255,255,0.6)" font-family="Malgun Gothic">CAT 3</text>
+<text x="870" y="380" font-size="14" font-weight="800" fill="#fff" font-family="Malgun Gothic">⚙️ 플랫폼/앱</text>
+<rect x="1080" y="362" width="22" height="22" rx="11" fill="rgba(255,255,255,0.2)"/>
+<text x="1091" y="378" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" font-family="Malgun Gothic">15</text>
+<line x1="830" y1="388" x2="1100" y2="388" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="830" y="405" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">10-04 오케스트레이션  ·  10-06 UI쇼케이스  ·  30-06 AUTOBOOK</text>
+<text x="830" y="420" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">30-07 오토북엔진  ·  30-08 BookStore  ·  30-11 RQTDW</text>
+<text x="830" y="435" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">40-08 AdGenEngine  ·  40-09~11 씩크드로우·GEO콘텐츠·GEO-AIO</text>
+<text x="830" y="451" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">50-01~04 스타트업파인더·SalesSpark·M&A·OPS  ·  50-09 특허</text>
+
+<!-- 선거 -->
+<g filter="url(#shadow)">
+  <rect x="810" y="480" width="140" height="100" rx="12" fill="url(#gRed)" stroke="#ef9a9a" stroke-width="1.5"/>
+</g>
+<text x="826" y="502" font-size="10.5" font-weight="800" fill="rgba(255,255,255,0.6)" font-family="Malgun Gothic">CAT 4</text>
+<text x="826" y="519" font-size="13" font-weight="800" fill="#fff" font-family="Malgun Gothic">🗳 선거</text>
+<rect x="920" y="486" width="22" height="22" rx="11" fill="rgba(255,255,255,0.2)"/>
+<text x="931" y="502" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" font-family="Malgun Gothic">4</text>
+<line x1="826" y1="526" x2="940" y2="526" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="826" y="542" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">50-05 AI선거솔루션</text>
+<text x="826" y="555" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">50-06 선거리포트</text>
+<text x="826" y="568" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">50-07 BJ · 차량최적화</text>
+
+<!-- 미디어 -->
+<g filter="url(#shadow)">
+  <rect x="970" y="480" width="140" height="100" rx="12" fill="url(#gPink)" stroke="#f48fb1" stroke-width="1.5"/>
+</g>
+<text x="986" y="502" font-size="10.5" font-weight="800" fill="rgba(255,255,255,0.6)" font-family="Malgun Gothic">CAT 5</text>
+<text x="986" y="519" font-size="13" font-weight="800" fill="#fff" font-family="Malgun Gothic">🎙 미디어</text>
+<rect x="1080" y="486" width="22" height="22" rx="11" fill="rgba(255,255,255,0.2)"/>
+<text x="1091" y="502" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" font-family="Malgun Gothic">6</text>
+<line x1="986" y1="526" x2="1102" y2="526" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="986" y="542" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">40-01 클라라라디오카페</text>
+<text x="986" y="555" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">40-02 스타벅스라디오</text>
+<text x="986" y="568" font-size="8.5" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">40-03~05 정치·시장·교회</text>
+
+<!-- 컨설팅 -->
+<g filter="url(#shadow)">
+  <rect x="810" y="594" width="300" height="110" rx="12" fill="url(#gOrange)" stroke="#ffab91" stroke-width="1.5"/>
+</g>
+<text x="830" y="618" font-size="11" font-weight="800" fill="rgba(255,255,255,0.6)" font-family="Malgun Gothic">CAT 6</text>
+<text x="870" y="618" font-size="14" font-weight="800" fill="#fff" font-family="Malgun Gothic">💼 컨설팅</text>
+<rect x="1080" y="600" width="22" height="22" rx="11" fill="rgba(255,255,255,0.2)"/>
+<text x="1091" y="616" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" font-family="Malgun Gothic">10</text>
+<line x1="830" y1="626" x2="1100" y2="626" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="830" y="643" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">03-03 AX비즈그룹  ·  30-10 어머니손맛레시피</text>
+<text x="830" y="658" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">50-11 택시빈차AI내비  ·  60-01 선웅규대표</text>
+<text x="830" y="673" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">60-01-1 AX-On  ·  60-02 미소미  ·  60-03 리젠메드</text>
+<text x="830" y="689" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">60-04 브레인트러스트  ·  60-05-01 케르비시아  ·  60-05-02 소셜허브</text>
+
+<!-- 도구 -->
+<g filter="url(#shadow)">
+  <rect x="810" y="718" width="300" height="100" rx="12" fill="url(#gGreen)" stroke="#a5d6a7" stroke-width="1.5"/>
+</g>
+<text x="830" y="742" font-size="11" font-weight="800" fill="rgba(255,255,255,0.6)" font-family="Malgun Gothic">CAT 7</text>
+<text x="870" y="742" font-size="14" font-weight="800" fill="#fff" font-family="Malgun Gothic">🛠 도구</text>
+<rect x="1080" y="724" width="22" height="22" rx="11" fill="rgba(255,255,255,0.2)"/>
+<text x="1091" y="740" font-size="10" font-weight="800" fill="#fff" text-anchor="middle" font-family="Malgun Gothic">5</text>
+<line x1="830" y1="750" x2="1100" y2="750" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+<text x="830" y="767" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">03-02 Shim Platform Index (this)</text>
+<text x="830" y="782" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">10-03 메이크매뉴얼  ·  10-05 Claude도구모음</text>
+<text x="830" y="797" font-size="9" fill="rgba(255,255,255,0.7)" font-family="Malgun Gothic">40-07 PDF슬라이드편집기  ·  50-12 화이어내비</text>
+
+<!-- 외부 링크 -->
+<g filter="url(#shadow)">
+  <rect x="810" y="832" width="300" height="68" rx="12" fill="#1a2a3a" stroke="rgba(100,181,246,0.5)" stroke-width="1.5" stroke-dasharray="6,3"/>
+</g>
+<text x="830" y="855" font-size="10.5" font-weight="800" fill="#64b5f6" font-family="Malgun Gothic">🌐 외부 링크 (GitHub Pages)</text>
+<text x="830" y="872" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">20-02 AX BIZ 그룹 · jaiwshim-project.github.io/01-2-AXBizGroup</text>
+<text x="830" y="887" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">12-4 Digital Smile DC · jaiwshim-project.github.io/12-4-DigitalSmileDC</text>
+
+<!-- ══════════════════════════════════════════════════
+     Zone 5 — CSS 스타일 (오른쪽 상단)
+══════════════════════════════════════════════════ -->
+
+<!-- CSS 스타일 섹션 -->
+<rect x="1135" y="108" width="330" height="32" rx="8" fill="rgba(21,61,111,0.9)" stroke="rgba(144,202,249,0.3)" stroke-width="1"/>
+<text x="1151" y="129" font-size="11" font-weight="800" fill="rgba(255,255,255,0.8)" font-family="Malgun Gothic" letter-spacing="1">🎨 CSS 스타일 시스템</text>
+
+<!-- CSS Variables -->
+<g filter="url(#shadow)">
+  <rect x="1135" y="152" width="155" height="90" rx="10" fill="#1a2a3a" stroke="rgba(144,202,249,0.25)" stroke-width="1.5"/>
+</g>
+<rect x="1135" y="152" width="5" height="90" rx="3" fill="#4fc3f7"/>
+<text x="1153" y="173" font-size="10" font-weight="800" fill="#90caf9" font-family="Malgun Gothic">:root Variables</text>
+<text x="1153" y="188" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">--bg / --text / --border</text>
+<text x="1153" y="202" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">--blue / --purple / --teal</text>
+<text x="1153" y="216" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">--c-치과 / --c-AI교육 ···</text>
+<text x="1153" y="230" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="Malgun Gothic">카테고리별 7색 accent</text>
+
+<!-- 반응형 -->
+<g filter="url(#shadow)">
+  <rect x="1305" y="152" width="160" height="90" rx="10" fill="#1a2a3a" stroke="rgba(144,202,249,0.25)" stroke-width="1.5"/>
+</g>
+<rect x="1305" y="152" width="5" height="90" rx="3" fill="#a5d6a7"/>
+<text x="1323" y="173" font-size="10" font-weight="800" fill="#a5d6a7" font-family="Malgun Gothic">반응형 (@media)</text>
+<text x="1323" y="190" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">≤1400px → 4열 그리드</text>
+<text x="1323" y="204" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">≤1100px → 3열 그리드</text>
+<text x="1323" y="218" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">≤760px  → 2열 그리드</text>
+<text x="1323" y="232" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">≤640px  → 1열 그리드</text>
+
+<!-- 카드 스타일 -->
+<g filter="url(#shadow)">
+  <rect x="1135" y="256" width="155" height="80" rx="10" fill="#1a2a3a" stroke="rgba(144,202,249,0.25)" stroke-width="1.5"/>
+</g>
+<rect x="1135" y="256" width="5" height="80" rx="3" fill="#ce93d8"/>
+<text x="1153" y="275" font-size="10" font-weight="800" fill="#ce93d8" font-family="Malgun Gothic">카드 컴포넌트</text>
+<text x="1153" y="290" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">배경 그라디언트 · 컬러 테두리</text>
+<text x="1153" y="304" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">::before 상단 컬러 바</text>
+<text x="1153" y="318" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">hover 글로우 · 그림자</text>
+<text x="1153" y="330" font-size="8.5" fill="rgba(255,255,255,0.35)" font-family="Malgun Gothic">type-direct / type-sub / user-card</text>
+
+<!-- 탭 스타일 -->
+<g filter="url(#shadow)">
+  <rect x="1305" y="256" width="160" height="80" rx="10" fill="#1a2a3a" stroke="rgba(144,202,249,0.25)" stroke-width="1.5"/>
+</g>
+<rect x="1305" y="256" width="5" height="80" rx="3" fill="#ffab91"/>
+<text x="1323" y="275" font-size="10" font-weight="800" fill="#ffab91" font-family="Malgun Gothic">필터 탭 스타일</text>
+<text x="1323" y="290" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">카테고리별 고유 색상</text>
+<text x="1323" y="304" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">active: 솔리드 그라디언트</text>
+<text x="1323" y="318" font-size="8.5" fill="rgba(255,255,255,0.5)" font-family="Malgun Gothic">tab-count 뱃지 숫자</text>
+<text x="1323" y="330" font-size="8.5" fill="rgba(255,255,255,0.35)" font-family="Malgun Gothic">custom 탭 추가/삭제 지원</text>
+
+<!-- ══════════════════════════════════════════════════
+     연결선들 (Zone 4 커넥터)
+══════════════════════════════════════════════════ -->
+<!-- HTML구조 → 데이터 영역 연결 -->
+<path d="M 745 210 C 790 210, 790 280, 810 280" stroke="rgba(128,203,196,0.3)" stroke-width="1" fill="none" stroke-dasharray="4,3"/>
+<path d="M 745 400 C 790 400, 790 395, 810 395" stroke="rgba(128,203,196,0.3)" stroke-width="1" fill="none" stroke-dasharray="4,3"/>
+<path d="M 745 592 C 790 592, 790 640, 810 640" stroke="rgba(128,203,196,0.3)" stroke-width="1" fill="none" stroke-dasharray="4,3"/>
+
+<!-- ══════════════════════════════════════════════════
+     총계 박스 (하단)
+══════════════════════════════════════════════════ -->
+<g filter="url(#shadow)">
+  <rect x="40" y="856" width="750" height="72" rx="14" fill="url(#gRoot)" stroke="rgba(252,211,77,0.4)" stroke-width="1.5"/>
+</g>
+<rect x="40" y="856" width="6" height="72" rx="3" fill="#fcd34d"/>
+<text x="62" y="878" font-size="12" font-weight="800" fill="#fcd34d" font-family="Malgun Gothic">📌 요약</text>
+<text x="62" y="896" font-size="10" fill="rgba(255,255,255,0.75)" font-family="Malgun Gothic">파일: index.html · serve.py · .claude/settings.local.json  │  Git: jaiwshim-project/00-Shim_Platform_Index</text>
+<text x="62" y="913" font-size="10" fill="rgba(255,255,255,0.75)" font-family="Malgun Gothic">총 프로젝트: 71개  │  카테고리: 7개  │  Supabase 연동  │  GitHub Pages 외부링크 2개  │  CSS 카테고리 컬러 시스템</text>
+
+<!-- 버전 워터마크 -->
+<text x="1480" y="966" font-size="9" fill="rgba(255,255,255,0.18)" font-family="Malgun Gothic" text-anchor="end">Generated by Claude Code · 2026-03-12</text>
+</svg>
+</div>
+
+</body>
+</html>
