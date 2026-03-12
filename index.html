@@ -334,6 +334,16 @@
   .edit-mode .card { padding-bottom:14px; }
   /* 커스텀 탭 편집 아이콘 */
   .tab.custom .edit-tab { font-size:0.72rem; opacity:0.55; padding:1px 3px; border-radius:3px; }
+
+  /* 탭 카운트 뱃지 */
+  .tab-count {
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:18px; height:18px; padding:0 5px;
+    background:rgba(0,0,0,0.1); color:inherit;
+    border-radius:10px; font-size:0.66rem; font-weight:800;
+    margin-left:4px; line-height:1;
+  }
+  .tab.active .tab-count { background:rgba(255,255,255,0.25); color:#fff; }
   .tab.custom .edit-tab:hover { opacity:1; background:rgba(0,0,0,0.12); }
 
   /* 반응형 */
@@ -371,14 +381,14 @@
     <div class="search-dropdown" id="searchDd"></div>
   </div>
   <div class="filter-tabs" id="filterTabs">
-    <button class="tab active" data-cat="전체" onclick="setTab(this)">전체</button>
-    <button class="tab" data-cat="치과"   onclick="setTab(this)">🦷 치과/의료 <span class="edit-tab" onclick="enterEditMode(event,'치과')">✏️</span></button>
-    <button class="tab" data-cat="AI교육" onclick="setTab(this)">📚 AI 교육 <span class="edit-tab" onclick="enterEditMode(event,'AI교육')">✏️</span></button>
-    <button class="tab" data-cat="플랫폼" onclick="setTab(this)">⚙️ 플랫폼/앱 <span class="edit-tab" onclick="enterEditMode(event,'플랫폼')">✏️</span></button>
-    <button class="tab" data-cat="선거"   onclick="setTab(this)">🗳 선거 <span class="edit-tab" onclick="enterEditMode(event,'선거')">✏️</span></button>
-    <button class="tab" data-cat="미디어" onclick="setTab(this)">🎙 미디어 <span class="edit-tab" onclick="enterEditMode(event,'미디어')">✏️</span></button>
-    <button class="tab" data-cat="컨설팅" onclick="setTab(this)">💼 컨설팅 <span class="edit-tab" onclick="enterEditMode(event,'컨설팅')">✏️</span></button>
-    <button class="tab" data-cat="도구"   onclick="setTab(this)">🛠 도구 <span class="edit-tab" onclick="enterEditMode(event,'도구')">✏️</span></button>
+    <button class="tab active" data-cat="전체" onclick="setTab(this)">전체 <span class="tab-count" id="cnt-전체"></span></button>
+    <button class="tab" data-cat="치과"   onclick="setTab(this)">🦷 치과/의료 <span class="tab-count" id="cnt-치과"></span><span class="edit-tab" onclick="enterEditMode(event,'치과')">✏️</span></button>
+    <button class="tab" data-cat="AI교육" onclick="setTab(this)">📚 AI 교육 <span class="tab-count" id="cnt-AI교육"></span><span class="edit-tab" onclick="enterEditMode(event,'AI교육')">✏️</span></button>
+    <button class="tab" data-cat="플랫폼" onclick="setTab(this)">⚙️ 플랫폼/앱 <span class="tab-count" id="cnt-플랫폼"></span><span class="edit-tab" onclick="enterEditMode(event,'플랫폼')">✏️</span></button>
+    <button class="tab" data-cat="선거"   onclick="setTab(this)">🗳 선거 <span class="tab-count" id="cnt-선거"></span><span class="edit-tab" onclick="enterEditMode(event,'선거')">✏️</span></button>
+    <button class="tab" data-cat="미디어" onclick="setTab(this)">🎙 미디어 <span class="tab-count" id="cnt-미디어"></span><span class="edit-tab" onclick="enterEditMode(event,'미디어')">✏️</span></button>
+    <button class="tab" data-cat="컨설팅" onclick="setTab(this)">💼 컨설팅 <span class="tab-count" id="cnt-컨설팅"></span><span class="edit-tab" onclick="enterEditMode(event,'컨설팅')">✏️</span></button>
+    <button class="tab" data-cat="도구"   onclick="setTab(this)">🛠 도구 <span class="tab-count" id="cnt-도구"></span><span class="edit-tab" onclick="enterEditMode(event,'도구')">✏️</span></button>
     <!-- 커스텀 탭들이 여기에 추가됨 -->
     <div id="customTabs"></div>
     <!-- + 추가 버튼 & 입력 -->
@@ -1009,6 +1019,18 @@ function filter() {
     p.dir.toLowerCase().includes(q)
   );
   render(list);
+  updateTabCounts();
+}
+
+function updateTabCounts() {
+  const all = getAllProjects();
+  const cats = ['전체','치과','AI교육','플랫폼','선거','미디어','컨설팅','도구'];
+  cats.forEach(cat => {
+    const el = document.getElementById('cnt-' + cat);
+    if (!el) return;
+    const n = cat === '전체' ? all.length : all.filter(p => p.cat === cat || (p.extraCats||[]).includes(cat)).length;
+    el.textContent = n;
+  });
 }
 
 function setTab(el) {
